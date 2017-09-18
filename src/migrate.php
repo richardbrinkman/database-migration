@@ -38,7 +38,6 @@
 	sort($installIds);
 	$insertStatement = $pdo->prepare("INSERT INTO $table(id, down) VALUES (:id, :down)");
 	foreach ($installIds as $id)
-		echo file_get_contents($migrationDir . $id . "-up.sql");
 		$pdo->query(file_get_contents($migrationDir . $id . "-up.sql")) and
 		$insertStatement->execute([":id" => $id, ":down" => file_get_contents($migrationdir . $id . "-down.sql")]);
 ?>
