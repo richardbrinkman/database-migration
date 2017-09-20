@@ -39,5 +39,5 @@
 	$insertStatement = $pdo->prepare("INSERT INTO $table(id, down) VALUES (:id, :down)");
 	foreach ($installIds as $id)
 		$pdo->query(file_get_contents($migrationDir . $id . "-up.sql")) and
-		$insertStatement->execute([":id" => $id, ":down" => file_get_contents($migrationdir . $id . "-down.sql")]);
+		$insertStatement->execute([":id" => $id, ":down" => file_get_contents($migrationDir . $id . "-down.sql")]);
 ?>
